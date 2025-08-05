@@ -5,18 +5,44 @@
  * Versão: 1.0
 ********************************************************************/
 
-//funcoes para validar as entradas
+//função para validar as entradas
+function validarEntradas(capitalInicial, jurosAnual, jurosCompostosAno, tempoEmAnos){
 
-    //é possivel que seja 2 ou mais funções para isso... mas acho que da pra fazer em 1 só
+    //validando se o digitado nos campos foram de fato numeros e maior que zero. e também os juros compostos por ano não pode ser maior que 12 por conta dos meses
+    if (isNaN(capitalInicial) || capitalInicial <= 0 || isNaN(jurosAnual) || jurosAnual <= 0 ||
+        isNaN(jurosCompostosAno) || jurosCompostosAno <= 0 || jurosCompostosAno > 12 || isNaN(tempoEmAnos) || tempoEmAnos <= 0) {
+        return false
+    } else {
+        return true
+    }
+}
 
-//funcoes para converter (caso seja necessario)
+//função de calcular o montante
+function calcularMontante(capitalInicial,jurosAnual,jurosCompostosAno,tempoEmAnos){
 
-    //verificar, acredito que seja possivel com 1 também
+    //formula do juros composto, ** significa -> potenciação/exponenciação
+    let montante = capitalInicial * (1 + jurosAnual / jurosCompostosAno) ** (jurosCompostosAno * tempoEmAnos)
 
-//funcao para calcular o montante
+    return montante
+}
 
-    //apenas uma recebendo 4 parametros
+function exibirResultado(nome, produto, capitalInicial, jurosCompostosAno, tempoEmAnos, montante){
 
-//funcao para exibir o resultado ao usuario
+    let parcela = jurosCompostosAno * tempoEmAnos
 
-    //apenas uma recebendo 5 parametros (provavelmente)
+    console.log('**************************** Viva Moda ******************************')
+    console.log(`Muito obrigado por realizar a sua compra conosco Sr(a) ${nome}.`)
+    console.log(`A compra do produto ${produto}, tem um valor de: R$${capitalInicial.toFixed(2)}`)
+    console.log(`A sua compra será parcelada em ${parcela} vezes e o Sr(a) pagará: R$${montante.toFixed(2)}`)
+    console.log('Muito obrigado por escolher a Viva Moda.')
+    console.log('*********************************************************************')
+
+    return true
+}
+
+module.exports = {
+    validarEntradas,
+    calcularMontante,
+    exibirResultado
+}
+
