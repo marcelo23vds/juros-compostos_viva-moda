@@ -6,15 +6,14 @@
 ********************************************************************/
 
 //função para validar as entradas
-function validarEntradas(capitalInicial, jurosAnual, jurosCompostosAno, tempoEmAnos){
+function validarEntradas(entrada){
 
-    //validando se o digitado nos campos foram de fato numeros e maior que zero. e também os juros compostos por ano não pode ser maior que 12 por conta dos meses
-    if (isNaN(capitalInicial) || capitalInicial <= 0 || isNaN(jurosAnual) || jurosAnual <= 0 ||
-        isNaN(jurosCompostosAno) || jurosCompostosAno <= 0 || jurosCompostosAno > 12 || isNaN(tempoEmAnos) || tempoEmAnos <= 0) {
-        return false
-    } else {
+    //validando se o digitado nos campos foram de fato numeros e maior que zero
+    if (isNaN(entrada) || entrada <= 0) {
         return true
-    }
+    } else{
+        return false
+    } 
 }
 
 //função de calcular o montante
@@ -32,8 +31,8 @@ function exibirResultado(nome, produto, capitalInicial, jurosCompostosAno, tempo
 
     console.log('**************************** Viva Moda ******************************')
     console.log(`Muito obrigado por realizar a sua compra conosco Sr(a) ${nome}.`)
-    console.log(`A compra do produto ${produto}, tem um valor de: R$${capitalInicial.toFixed(2)}`)
-    console.log(`A sua compra será parcelada em ${parcela} vezes e o Sr(a) pagará: R$${montante.toFixed(2)}`)
+    console.log(`A compra do produto ${produto}, tem um valor de: R$ ${capitalInicial.toFixed(2)}`)
+    console.log(`A sua compra será parcelada em ${parcela} vezes e o Sr(a) pagará: R$ ${montante.toFixed(2)}`)
     console.log('Muito obrigado por escolher a Viva Moda.')
     console.log('*********************************************************************')
 
